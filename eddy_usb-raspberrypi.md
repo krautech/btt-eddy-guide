@@ -1,6 +1,12 @@
 This is for Eddy V1 USB ONLY
 
+
 ## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
+
+> [!IMPORTANT]
+>I placed my eddy configuration from step 9 into its own file eddy.cfg, however this caused an unseen problem later when live adjusting z offset. See [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
+> 
+>If not using seperate .cfg files and only using printer.cfg you can disregard live z save offset issues.
 
 ## Installation of EDDY USB V1 and Raspberry Pi
 
@@ -66,17 +72,24 @@ z_hop: 10
 z_hop_speed: 25
 speed: 200
 ```
+## Live Current Calibration
 10. Place Eddy Approx. 20mm above the bed.
 11. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
 12. Type ```SAVE_CONFIG``` to save the drive currant to your config
+## Z Offset Calibration
 13. Home X and Y axes with command ```G28 X Y```
 14. Make sure you dont have a bed heightmap loaded.
 15. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
 16. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
 17. Once completed use ```SAVE_CONFIG```
+## Bed Mesh Calibration
 18. Home All Axes
 19. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
 20. Once completed use ```SAVE_CONFIG```
+## Temperature Compensation Calibration (Eddy USB ONLY)
+> [!CAUTION]
+> The following steps (21-31) are for Eddy USB Only. Eddy Coil doesnt have temperature compensation so these steps should be disregarded.
+
 21. Home All Axes and move Z 10 above bed
 22. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
 23. Record ambient temp of the BTT Eddy Sensor
@@ -92,7 +105,7 @@ speed: 200
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
 
-## Notes
+## Extras & Notes
 
 - Klipper seems to only be able to save Z_Offset to printer.cfg so having ```z_offset: 1``` under ```[probe_eddy_current btt_eddy]``` results in unable to ```SAVE_CONFIG``` if its in its own .cfg file. I have moved these 2 sections into seperate files. This allows klipper to be able to save the z offset automatically.
 
