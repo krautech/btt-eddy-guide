@@ -66,7 +66,7 @@ speed: 200
 10. Place Eddy Approx. 20mm above the bed.
 11. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
 12. Type ```SAVE_CONFIG``` to save the drive currant to your config
-13. Home X and Y axes with command G28 X Y
+13. Home X and Y axes with command ```G28 X Y```
 14. Make sure you dont have a bed heightmap loaded.
 15. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
 16. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
