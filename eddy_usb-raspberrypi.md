@@ -117,6 +117,13 @@ y_offset: 20 # Set according to the actual offset relative to the nozzle
 data_rate: 500
 ```
 
+### START PRINT Macro
+
+- Add the following to your start print macro to enable adaptive bed mesh using Eddy
+```
+BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan ADAPTIVE=1
+```
+
 
 
 
