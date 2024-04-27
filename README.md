@@ -15,3 +15,9 @@ I'm running
 - Custom Heated Enclosure
 
 You can find my install instructions for BTT Eddy and raspberry pi [At this link](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md)
+
+
+
+![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/vyper/2.jpg?raw=true)
+
+![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/vyper/3.jpg?raw=true)
