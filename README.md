@@ -13,7 +13,7 @@ I'm running
 - Raspberry Pi 4B
 - Hero Me Gen 7 with Dual 5015 Fans
 - Custom Heated Enclosure
-- Chamber Temperature Probe
+- Chamber Temperature Probe & Chamber Exhaust Fan
 
 ## My Configuration
 
