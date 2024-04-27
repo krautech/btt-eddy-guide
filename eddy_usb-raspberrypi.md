@@ -1,5 +1,7 @@
 This is for Eddy V1 USB ONLY
 
+Please read NOTES
+
 
 1. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
 2. SSH into raspberry PI
@@ -88,6 +90,31 @@ speed: 200
 31. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
+
+## Notes
+
+- Klipper seems to only be able to save Z_Offset to printer.cfg so having ```z_offset: 1``` under ```[probe_eddy_current btt_eddy]``` results in unable to ```SAVE_CONFIG``` if its in its own .cfg file. I have moved these 2 sections into seperate files. This allows klipper to be able to save the z offset automatically.
+
+Printer.cfg
+
+```
+[probe_eddy_current btt_eddy]
+z_offset: 1.0
+```
+
+eddy.cfg
+
+```
+[probe_eddy_current btt_eddy]
+sensor_type: ldc1612
+#z_offset: 1.0 ## THIS IS SET IN PRINTER.CFG INSTEAD
+#i2c_address:
+i2c_mcu: eddy
+i2c_bus: i2c0f
+x_offset: 0 # Set according to the actual offset relative to the nozzle
+y_offset: 20 # Set according to the actual offset relative to the nozzle
+data_rate: 500
+```
 
 
 
