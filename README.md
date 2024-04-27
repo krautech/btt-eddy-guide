@@ -1,5 +1,7 @@
 # Anycubic Vyper Klipper 
 
+![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/vyper/1.jpg?raw=true)
+
 I'm running
 
 - E3D Revo Six Hotend
