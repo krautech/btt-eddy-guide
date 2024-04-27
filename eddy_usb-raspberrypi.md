@@ -7,7 +7,7 @@ This is for Eddy V1 USB ONLY
 
 ![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/lsusb.png?raw=true)
 
-4. Type  cd klipper into command line
+4. Type  ```cd ~/klipper``` into command line
 5. Type ```make flash FLASH_DEVICE=2e8a:0003```
 Remember to change 2e8a:0003 to your device ID you found in step 3
 6. Type  ```ls /dev/serial/by-id/*```  into the command line. The found device will be what you enter into your klipper config under [mcu eddy] for the Serial variable.
