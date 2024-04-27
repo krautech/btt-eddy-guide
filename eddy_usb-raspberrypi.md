@@ -5,7 +5,7 @@ This is for Eddy V1 USB ONLY
 2. SSH into raspberry PI
 3. Type ```lsusb``` into the command line. You should see eddy. 
 
-![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/lsusb.png?raw=true)
+![LSUSB Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/lsusb.png?raw=true)
 
 4. Type  ```cd ~/klipper``` into command line
 5. Type ```make flash FLASH_DEVICE=2e8a:0003```
@@ -66,7 +66,7 @@ speed: 200
 10. Place Eddy Approx. 20mm above the bed.
 11. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
 12. Type ```SAVE_CONFIG``` to save the drive currant to your config
-13. Home X and Y axes with command G28 X Y
+13. Home X and Y axes with command ```G28 X Y```
 14. Make sure you dont have a bed heightmap loaded.
 15. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
 16. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
@@ -74,9 +74,10 @@ speed: 200
 18. Home All Axes
 19. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
 20. Once completed use ```SAVE_CONFIG```
-21. Home All Axes and move Z 30 above bed
+21. Home All Axes and move Z 10 above bed
 22. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
 23. Record ambient temp of the BTT Eddy Sensor
+![Eddy Temperature](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/eddy-temp.jpg?raw=true)
 24. Set max temp for bed (i.e 100c) and set typical temperature for hotend (200c)
 25. Wait for BTT Eddy temp to stabilize then record temp.
 26. Return to room temp by turning off bed and hotend
