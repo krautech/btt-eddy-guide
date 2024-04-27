@@ -14,6 +14,8 @@ I'm running
 - Hero Me Gen 7 with Dual 5015 Fans
 - Custom Heated Enclosure
 
+## My Configuration
+
 - My configuration is setup for use with either BL Touch connected to the endstop pins on the EBB42 board, or BTT Eddy USB. Easily swapped by swapping which config is loaded (BLTouch.cfg or Eddy.cfg)
 - Sensorless Homing on X and Y Axis.
 - Z Endstop is setup for Eddy to probe home.
