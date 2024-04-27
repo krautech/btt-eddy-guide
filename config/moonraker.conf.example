@@ -24,9 +24,6 @@ trusted_clients:
     FE80::/10
     ::1/128
     127.0.0.1
-    100.67.129.33
-    100.82.28.123
-    100.94.197.90
 
 # enables partial support of Octoprint API
 [octoprint_compat]
@@ -95,14 +92,14 @@ managed_services: sonar
 install_script: tools/install.sh
 
 [mqtt]
-address: 192.168.0.230
+address: [mqtt IP]
 port: 1884
 #   Port the Broker is listening on.  Default is 1883.
-username: chris
+username: [mqtt username]
 #   An optional username used to log in to the Broker.  This option accepts
 #   Jinja2 Templates, see the [secrets] section for details. The default is
 #   no username (an anonymous login will be attempted).
-password: Rhylee13
+password: [mqtt password]
 #   An optional password used to log in to the Broker.  This option accepts
 #   Jinja2 Templates, see the [secrets] section for details.  The default is
 #   no password.
