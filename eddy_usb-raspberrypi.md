@@ -7,7 +7,7 @@ This is for Eddy V1 USB ONLY
 
 ![alt text](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/lsusb.png?raw=true)
 
-4. Type  cd klipper into command line
+4. Type  ```cd ~/klipper``` into command line
 5. Type ```make flash FLASH_DEVICE=2e8a:0003```
 Remember to change 2e8a:0003 to your device ID you found in step 3
 6. Type  ```ls /dev/serial/by-id/*```  into the command line. The found device will be what you enter into your klipper config under [mcu eddy] for the Serial variable.
@@ -81,9 +81,12 @@ speed: 200
 25. Wait for BTT Eddy temp to stabilize then record temp.
 26. Return to room temp by turning off bed and hotend
 27. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 25.
-28. Quickly set Z offset
-29. Heat bed and nozzle
-30. As Eddy temp rises at each 5c increment set the z-offset when prompted
+28. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
+29. Heat bed and nozzle to same values as step 24
+30. As Eddy temp rises at each 3c (STEP=3) increment set the z-offset when prompted using the paper test.
+31. Youre all done! :)
+
+Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
 
 
 
