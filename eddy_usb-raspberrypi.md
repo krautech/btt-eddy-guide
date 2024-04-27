@@ -1,7 +1,8 @@
 This is for Eddy V1 USB ONLY
 
-Please read NOTES
+## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 
+## Installation of EDDY USB V1 and Raspberry Pi
 
 1. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
 2. SSH into raspberry PI
