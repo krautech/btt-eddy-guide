@@ -74,7 +74,7 @@ speed: 200
 18. Home All Axes
 19. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
 20. Once completed use ```SAVE_CONFIG```
-21. Home All Axes and move Z 30 above bed
+21. Home All Axes and move Z 10 above bed
 22. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
 23. Record ambient temp of the BTT Eddy Sensor
 ![Eddy Temperature](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/eddy-temp.jpg?raw=true)
