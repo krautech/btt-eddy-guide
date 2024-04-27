@@ -21,7 +21,8 @@ I'm running
 - Sensorless Homing on X and Y Axis.
 - Z Endstop is setup for Eddy to probe home.
 
-You can find my install instructions for BTT Eddy and raspberry pi [At this link](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md)
+## EDDY INSTALLATION
+- You can find my install instructions for BTT Eddy and raspberry pi [At this link](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md)
 
 
 
