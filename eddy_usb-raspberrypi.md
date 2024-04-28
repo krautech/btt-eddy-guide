@@ -21,7 +21,7 @@
 # Index
 - [Compiling Firmware](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#compiling-firmware)
 - [Printer Configuration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
-- [Live Currant Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
+- [Live Current Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
 - [Z-Offset Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#3-z-offset-calibration)
 - [Bed Mesh Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#4-bed-mesh-calibration)
 - [Temperature Compensation Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#5-temperature-compensation-calibration-eddy-usb-only)
