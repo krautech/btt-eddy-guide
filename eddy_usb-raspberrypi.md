@@ -25,7 +25,7 @@
 - [Z-Offset Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#3-z-offset-calibration)
 - [Bed Mesh Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#4-bed-mesh-calibration)
 - [Temperature Compensation Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#5-temperature-compensation-calibration-eddy-usb-only)
--
+>
 - [Bed Mesh Calibration Parameters](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
 - [Bed Mesh Scan Height](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-scan-height)
 - [Bed Mesh Rapid Scanning](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#rapid-continuous-scanning)
