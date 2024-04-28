@@ -6,6 +6,11 @@ This is for Eddy V1 USB ONLY
 >
 > Instead KAMP has been integrated into klipper as of January 2024 and you should use the ADAPTIVE=1 option in your BED_MESH_CALIBRATION calls. You can find more [Information on Adaptive Mesh Here](https://www.klipper3d.org/Bed_Mesh.html#adaptive-meshes)
 
+> [!WARNING]
+> As it stands, Eddy requires the use of BTT's fork of klipper found [HERE](https://github.com/bigtreetech/klipper). This is included in the guide under steps 13.
+> 
+> This will be merged into mainline klipper at some stage and the guide will be updated once it happens. Until then this is a STRICT REQUIREMENT.
+
 > [!IMPORTANT]
 >I placed my eddy configuration from step 9 into its own file eddy.cfg, however this caused an unseen problem later when live adjusting z offset. See [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 > 
@@ -37,8 +42,11 @@ make menuconfig
 11. Type ```make flash FLASH_DEVICE=2e8a:0003```
 Remember to change 2e8a:0003 to your device ID you found in step 9
 12. Type  ```ls /dev/serial/by-id/*```  into the command line. The found device will be what you enter into your klipper config under [mcu eddy] for the Serial variable.
-
-13. Type into command line 
+> [!NOTE]
+> You need to change from the main branch of klipper to BTTs branch as discussed in the warning at the top of the page. This is only temporary and will be updated accordingly.
+> 
+> Still accurate as of **28-04-2024**.
+13. Change to BTT klipper by entering the following via SSH
 ```
 git remote add eddy https://github.com/bigtreetech/klipper
 git fetch eddy
