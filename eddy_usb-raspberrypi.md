@@ -14,6 +14,15 @@ This is for Eddy V1 USB ONLY
 ## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 
 # Installation of EDDY USB V1 and Raspberry Pi
+## Compiling Firmware
+1. SSH into raspberry PI
+2. Type
+```
+cd ~/klipper
+make menuconfig
+```
+3. Use these settings to compile the firmware.
+![Firmware Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/firmware.png?raw=true)
 
 ## 1. Firmware Update & Configuration
 1. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
