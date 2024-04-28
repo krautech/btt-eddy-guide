@@ -97,11 +97,14 @@ speed: 200
 24. Set max temp for bed (i.e 100c) and set typical temperature for hotend (200c)
 25. Wait for BTT Eddy temp to stabilize then record temp.
 26. Return to room temp by turning off bed and hotend
+> [!TIP]
+> If you have a high range to test between ambient and max eddy temp from step 25, you can change the value of STEP=3 to STEP=5 to save you some time. Ideally you want as many calibration points as possible for the best use of eddy but I found for range between 30c-50c a STEP value of 3 was sufficient
+
 27. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 25.
-28. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
-29. Heat bed and nozzle to same values as step 24
-30. As Eddy temp rises at each 3c (STEP=3) increment set the z-offset when prompted using the paper test.
-31. Youre all done! :)
+29. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
+30. Heat bed and nozzle to same values as step 24
+31. As Eddy temp rises at each 3c (STEP=3) increment set the z-offset when prompted using the paper test.
+32. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
 
