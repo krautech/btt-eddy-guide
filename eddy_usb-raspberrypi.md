@@ -86,10 +86,15 @@ speed: 200
 11. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
 12. Type ```SAVE_CONFIG``` to save the drive currant to your config
 ## 3. Z Offset Calibration
+> [!IMPORTANT]
+> If using a printer with Quick Gantry Leveling (Voron etc) perform it now to ensure the gantry is level and to prevent the nozzle rubbing into the bed.
+ 
 13. Home X and Y axes with command ```G28 X Y```
 14. Make sure you dont have a bed heightmap loaded.
 15. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
 16. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
+> [!IMPORTANT]
+> Perform another Quick Gantry Leveling (Voron etc)
 17. Once completed use ```SAVE_CONFIG```
 ## 4. Bed Mesh Calibration
 18. Home All Axes
@@ -111,8 +116,8 @@ speed: 200
 
 27. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 25.
 29. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
-30. Heat bed and nozzle to same values as step 24
-31. As Eddy temp rises at each 3c (STEP=3) increment set the z-offset when prompted using the paper test.
+30. Turn on your heat bed and nozzle to same values as step 24
+31. As Eddy temp rises at each 3c (STEP=3) increment, you will automatically be asked to set the z-offset when prompted using the paper test.
 32. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
