@@ -229,6 +229,29 @@ This overshoot improves sampling at the edges of a mesh, however it requires
 that the mesh be configured in a way that allows the tool to travel outside
 of the mesh.
 
+
+```
+[bed_mesh]
+speed: 120
+horizontal_move_z: 5
+mesh_min: 35, 6
+mesh_max: 240, 198
+probe_count: 5
+scan_overshoot: 8
+```
+
+- `scan_overshoot`
+  _Default Value: 0 (disabled)_\
+  The maximum amount of travel (in mm) available outside of the mesh.
+  For rectangular beds this applies to travel on the X axis, and for round beds
+  it applies to the entire radius.  The tool must be able to travel the amount
+  specified outside of the mesh.  This value is used to optimize the travel
+  path when performing a "rapid scan".  The minimum value that may be specified
+  is 1.  The default is no overshoot.
+
+If no scan overshoot is configured then travel path optimization will not
+be applied to changes in direction.
+
 # Extras & Notes
 
 - Klipper seems to only be able to save Z_Offset to printer.cfg so having ```z_offset: 1``` under ```[probe_eddy_current btt_eddy]``` results in unable to ```SAVE_CONFIG``` if its in its own .cfg file. I have moved these 2 sections into seperate files. This allows klipper to be able to save the z offset automatically.
