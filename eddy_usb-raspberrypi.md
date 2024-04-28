@@ -17,6 +17,7 @@ This is for Eddy V1 USB ONLY
 
 ## 1. Firmware Update & Configuration
 1. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
+![Boot Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/boot.png?raw=true)
 2. SSH into raspberry PI
 3. Type ```lsusb``` into the command line. You should see eddy. 
 
