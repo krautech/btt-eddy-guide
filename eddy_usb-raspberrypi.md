@@ -37,6 +37,8 @@ git checkout eddy/eddy
 
 
 9. Add the following to your printer.cfg making sure to adjust for your bed size and probe position
+> [!IMPORTANT]
+> Adjust your **x_offset** and **y_offset** to match your probe position relative to your nozzle. You can do that following these steps found [HERE](https://www.klipper3d.org/Probe_Calibrate.html)
 
 ```
 [mcu eddy]
