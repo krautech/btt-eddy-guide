@@ -117,7 +117,7 @@ speed: 200
 23. Once completed use ```SAVE_CONFIG```
 ## 4. Bed Mesh Calibration
 24. Home All Axes
-25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](https://github.com/krautech/vyper-klipper/edit/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
+25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
 26. Once completed use ```SAVE_CONFIG```
 ## 5. Temperature Compensation Calibration (Eddy USB ONLY)
 > [!CAUTION]
