@@ -129,6 +129,21 @@ speed: 200
 34. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
 35. Turn on your heat bed and nozzle to same values as step 30
 36. As Eddy temp rises at each 3c (STEP=3) increment, you will automatically be asked to set the z-offset when prompted using the paper test.
+> [!NOTE]
+> By default the calibration procedure will request a manual probe every 2C between samples until the TARGET is reached. The temperature delta between samples can be customized by setting the STEP parameter in PROBE_DRIFT_CALIBRATE.
+>
+> The following additional gcode commands are available during drift calibration.
+>
+>    ```PROBE_DRIFT_NEXT``` may be used to force a new sample before the step delta has been reached.
+>
+>    ```PROBE_DRIFT_COMPLETE``` may be used to complete calibration before the TARGET has been reached.
+>
+>    ```ABORT``` may be used to end calibration and discard results.
+>
+
+> [!TIP]
+> You might not reach your target temperature, thats okay. You can end the test by using command ```PROBE_DRIFT_COMPLETE``` to finish.
+
 37. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
