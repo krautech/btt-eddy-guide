@@ -27,6 +27,7 @@
 - [Temperature Compensation Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#5-temperature-compensation-calibration-eddy-usb-only)
 -
 - [Bed Mesh Calibration Parameters](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
+- [Bed Mesh Scan Height](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-scan-height)
 - [Extras & Notes](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#extras--notes)
 - - Includes Print Start Macro Adjustment
 - [FAQ - Frequently Asked Questions](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#faq---frequently-asked-questions)
@@ -194,6 +195,20 @@ available to `BED_MESH_CALIBRATE`:
     are discarded and the remaining samples are averaged.
   - `weighted`: Samples closer to the desired probe location are assigned
     more weight in the average than samples farther from the location.
+
+# Bed Mesh Scan Height
+
+The scan height is set by the `horizontal_move_z` option in `[bed_mesh]`.  In
+addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via the
+`HORIZONTAL_MOVE_Z` parameter.
+
+The scan height must be sufficiently low to avoid scanning errors.  Typically
+a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming that the
+probe is mounted correctly.
+
+It should be noted that if the probe is more than 4mm above the surface then the
+results will be invalid.  Thus, scanning is not possible on beds with severe
+surface deviation or beds with extreme tilt that hasn't been corrected.
 
 # Extras & Notes
 
