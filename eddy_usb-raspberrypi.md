@@ -1,8 +1,6 @@
 This is for Eddy V1 USB ONLY
 
 
-## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
-
 > [!WARNING]  
 > [KAMP aka Klipper-Adaptive-Meshing-Purging](https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging) should be removed from your klipper prior to using Eddy. Complete removal including any added BED_MESH_CALIBRATION macros should be removed or sufficiently altered (outside the scope of this guide) if you want eddy to RAPID scan bed meshing. 
 >
@@ -12,6 +10,8 @@ This is for Eddy V1 USB ONLY
 >I placed my eddy configuration from step 9 into its own file eddy.cfg, however this caused an unseen problem later when live adjusting z offset. See [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 > 
 >If not using seperate .cfg files and only using printer.cfg you can disregard live z save offset issues.
+
+## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 
 ## Installation of EDDY USB V1 and Raspberry Pi
 
