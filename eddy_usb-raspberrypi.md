@@ -117,7 +117,7 @@ speed: 200
 23. Once completed use ```SAVE_CONFIG```
 ## 4. Bed Mesh Calibration
 24. Home All Axes
-25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
+25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](https://github.com/krautech/vyper-klipper/edit/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
 26. Once completed use ```SAVE_CONFIG```
 ## 5. Temperature Compensation Calibration (Eddy USB ONLY)
 > [!CAUTION]
@@ -155,6 +155,33 @@ speed: 200
 37. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
+
+# Bed Mesh Calibrate Parameters
+Some probes, such as Eddy, are capable of
+"scanning" the surface of the bed.  That is, these probes can sample a mesh
+without lifting the tool between samples.  To activate scanning mode, the
+`METHOD=scan` probe parameter should be passed in the `BED_MESH_CALIBRATE`
+gcode command.
+
+To accommodate these probes the following additional `probe_parameters` are
+available to `BED_MESH_CALIBRATE`:
+
+- `SCAN_MODE=[detailed | rapid]`:  Choses the scan mode.  The `detailed` mode
+  will pause and collect samples at each probe point.  The `rapid` mode will
+  travel on a continuous path with no pauses, collecting samples near each probe
+  point.
+- `SCAN_SPEED=[speed] `: The maximum X/Y travel velocity of the tool when
+  performing a scan.  The default is the value of the `speed` option in the
+  configuration.
+- `SAMPLE_TIME=[time]`:  The time, in seconds, the tool pauses for sample
+  collection in `detailed` scan mode.  The default is .1 seconds.
+- `SAMPLES_RESULT=[option]`: The type of averaging to perform on collected
+  samples.  Available options are:
+  - `standard`: All collected samples are averaged.
+  - `centered`: Samples are sorted by value.  The first and last quarters
+    are discarded and the remaining samples are averaged.
+  - `weighted`: Samples closer to the desired probe location are assigned
+    more weight in the average than samples farther from the location.
 
 # Extras & Notes
 
