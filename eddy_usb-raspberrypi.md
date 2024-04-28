@@ -28,6 +28,7 @@
 -
 - [Bed Mesh Calibration Parameters](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
 - [Bed Mesh Scan Height](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-scan-height)
+- [Bed Mesh Rapid Scanning](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#rapid-continuous-scanning)
 - [Extras & Notes](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#extras--notes)
 - - Includes Print Start Macro Adjustment
 - [FAQ - Frequently Asked Questions](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#faq---frequently-asked-questions)
@@ -209,6 +210,24 @@ probe is mounted correctly.
 It should be noted that if the probe is more than 4mm above the surface then the
 results will be invalid.  Thus, scanning is not possible on beds with severe
 surface deviation or beds with extreme tilt that hasn't been corrected.
+
+# Rapid (Continuous) Scanning
+
+When performing a `rapid` scan one should keep in mind that the results will
+have some amount of error.  This error should be low enough to be useful on
+large print areas with reasonably thick layer heights.  Some probes may be
+more prone to error than others.
+
+It is not recommended that rapid mode be used to scan a "dense" mesh.  Some of
+the error introduced during a rapid scan may be gaussian noise from the sensor,
+and a dense mesh will reflect this noise (ie: there will be peaks and valleys).
+
+Bed Mesh will attempt to optimize the travel path to provide the best possible
+result based on the the configuration.  This includes avoiding faulty regions
+when collecting samples and "overshooting" the mesh when changing direction.
+This overshoot improves sampling at the edges of a mesh, however it requires
+that the mesh be configured in a way that allows the tool to travel outside
+of the mesh.
 
 # Extras & Notes
 
