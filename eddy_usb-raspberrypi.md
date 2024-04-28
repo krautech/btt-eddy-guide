@@ -1,4 +1,4 @@
-This is for Eddy V1 USB ONLY
+# Installation of EDDY USB V1 and Raspberry Pi
 
 
 > [!WARNING]  
@@ -18,7 +18,19 @@ This is for Eddy V1 USB ONLY
 
 ## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 
-# Installation of EDDY USB V1 and Raspberry Pi
+# Index
+- [Compiling Firmware](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#compiling-firmware)
+- [Printer Configuration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
+- [Live Currant Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
+- [Z-Offset Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#3-z-offset-calibration)
+- [Bed Mesh Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#4-bed-mesh-calibration)
+- [Temperature Compensation Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#5-temperature-compensation-calibration-eddy-usb-only)
+-
+- [Bed Mesh Calibration Parameters](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
+- [Extras & Notes](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#extras--notes)
+- - Includes Print Start Macro Adjustment
+- [FAQ - Frequently Asked Questions](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#faq---frequently-asked-questions)
+
 ## Compiling Firmware
 1. SSH into raspberry PI
 2. Type
