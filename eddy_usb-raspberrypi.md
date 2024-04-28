@@ -22,31 +22,33 @@ cd ~/klipper
 make menuconfig
 ```
 3. Use these settings to compile the firmware.
-![Firmware Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/firmware.png?raw=true)
-
-## 1. Firmware Update & Configuration
-1. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
+![Firmware Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/compile.png?raw=true)
+4. Once set, hit 'Q' and when asked, select yes to save.
+5. Type ```make``` to compile.
+6. Disconnect power to Eddy
+7. Push and hold boot button on Eddy (Its next to where the cable plugs in) and at the same time, plug in the cable to your Raspberry Pi
 ![Boot Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/boot.png?raw=true)
-2. SSH into raspberry PI
-3. Type ```lsusb``` into the command line. You should see eddy. 
+8. SSH into raspberry Pi
+9. Type ```lsusb``` into the command line. You should see eddy. 
 
 ![LSUSB Image](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/lsusb.png?raw=true)
 
-4. Type  ```cd ~/klipper``` into command line
-5. Type ```make flash FLASH_DEVICE=2e8a:0003```
-Remember to change 2e8a:0003 to your device ID you found in step 3
-6. Type  ```ls /dev/serial/by-id/*```  into the command line. The found device will be what you enter into your klipper config under [mcu eddy] for the Serial variable.
+10. Type  ```cd ~/klipper``` into command line
+11. Type ```make flash FLASH_DEVICE=2e8a:0003```
+Remember to change 2e8a:0003 to your device ID you found in step 9
+12. Type  ```ls /dev/serial/by-id/*```  into the command line. The found device will be what you enter into your klipper config under [mcu eddy] for the Serial variable.
 
-7. Type into command line 
+13. Type into command line 
 ```
 git remote add eddy https://github.com/bigtreetech/klipper
 git fetch eddy
 git checkout eddy/eddy
 ```
-8. Type into command line ```sudo reboot```
+14. Type into command line ```sudo reboot```
 
+## Printer Configuration
 
-9. Add the following to your printer.cfg making sure to adjust for your bed size and probe position
+15. Add the following to your printer.cfg making sure to adjust for your bed size and probe position
 > [!IMPORTANT]
 > Adjust your **x_offset** and **y_offset** to match your probe position relative to your nozzle. You can do that following these steps found [HERE](https://www.klipper3d.org/Probe_Calibrate.html)
 
@@ -91,43 +93,43 @@ z_hop_speed: 25
 speed: 200
 ```
 ## 2. Live Current Calibration
-10. Place Eddy Approx. 20mm above the bed.
-11. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
-12. Type ```SAVE_CONFIG``` to save the drive currant to your config
+16. Place Eddy Approx. 20mm above the bed.
+17. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
+18. Type ```SAVE_CONFIG``` to save the drive currant to your config
 ## 3. Z Offset Calibration
 > [!IMPORTANT]
 > If using a printer with Quick Gantry Leveling (Voron etc) perform it now to ensure the gantry is level and to prevent the nozzle rubbing into the bed.
  
-13. Home X and Y axes with command ```G28 X Y```
-14. Make sure you dont have a bed heightmap loaded.
-15. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
-16. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
+19. Home X and Y axes with command ```G28 X Y```
+20. Make sure you dont have a bed heightmap loaded.
+21. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
+22. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
 > [!IMPORTANT]
 > Perform another Quick Gantry Leveling (Voron etc)
-17. Once completed use ```SAVE_CONFIG```
+23. Once completed use ```SAVE_CONFIG```
 ## 4. Bed Mesh Calibration
-18. Home All Axes
-19. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
-20. Once completed use ```SAVE_CONFIG```
+24. Home All Axes
+25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid```
+26. Once completed use ```SAVE_CONFIG```
 ## 5. Temperature Compensation Calibration (Eddy USB ONLY)
 > [!CAUTION]
-> The following steps (21-31) are for Eddy USB Only. Eddy Coil doesnt have temperature compensation so these steps should be disregarded.
+> The following steps (27-36) are for Eddy USB Only. Eddy Coil doesnt have temperature compensation so these steps should be disregarded.
 
-21. Home All Axes and move Z 10 above bed
-22. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
-23. Record ambient temp of the BTT Eddy Sensor
+27. Home All Axes and move Z 10 above bed
+28. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
+29. Record ambient temp of the BTT Eddy Sensor
 ![Eddy Temperature](https://github.com/krautech/vyper-klipper/blob/main/images/eddy-pi/eddy-temp.jpg?raw=true)
-24. Set max temp for bed (i.e 100c) and set typical temperature for hotend (200c)
-25. Wait for BTT Eddy temp to stabilize then record temp.
-26. Return to room temp by turning off bed and hotend
+30. Set max temp for bed (i.e 100c) and set typical temperature for hotend (200c)
+31. Wait for BTT Eddy temp to stabilize then record temp.
+32. Return to room temp by turning off bed and hotend
 > [!TIP]
 > If you have a high range to test between ambient and max eddy temp from step 25, you can change the value of STEP=3 to STEP=5 to save you some time. Ideally you want as many calibration points as possible for the best use of eddy but I found for range between 30c-50c a STEP value of 3 was sufficient
 
-27. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 25.
-29. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
-30. Turn on your heat bed and nozzle to same values as step 24
-31. As Eddy temp rises at each 3c (STEP=3) increment, you will automatically be asked to set the z-offset when prompted using the paper test.
-32. Youre all done! :)
+33. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 31.
+34. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
+35. Turn on your heat bed and nozzle to same values as step 30
+36. As Eddy temp rises at each 3c (STEP=3) increment, you will automatically be asked to set the z-offset when prompted using the paper test.
+37. Youre all done! :)
 
 Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
 
