@@ -21,6 +21,7 @@
 # Index
 - [Compiling Firmware](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#compiling-firmware)
 - [Printer Configuration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
+- - [Z Endstop](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#z-endstop)
 - [Live Current Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
 - [Z-Offset Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#3-z-offset-calibration)
 - [Bed Mesh Calibration](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#4-bed-mesh-calibration)
@@ -69,7 +70,10 @@ git checkout eddy/eddy
 14. Type into command line ```sudo reboot```
 
 ## Printer Configuration
-
+> [!IMPORTANT]
+> ### Z Endstop
+> If you want to enable Z-Homing/Endstop, under your [stepper_z] in printer.cfg change ```endstop_pin: PA5``` to ```endstop_pin: probe:z_virtual_endstop``` and comment out or remove ```position_endstop: 0```
+> 
 15. Add the following to your printer.cfg making sure to adjust for your bed size and probe position
 > [!IMPORTANT]
 > Adjust your **x_offset** and **y_offset** to match your probe position relative to your nozzle. You can do that following these steps found [HERE](https://www.klipper3d.org/Probe_Calibrate.html)
