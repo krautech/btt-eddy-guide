@@ -2,7 +2,7 @@
 
 
 > [!WARNING]  
-> [KAMP aka Klipper-Adaptive-Meshing-Purging](https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging) should be removed from your klipper prior to using Eddy. Complete removal including any added BED_MESH_CALIBRATION macros should be removed or sufficiently altered (outside the scope of this guide) if you want eddy to RAPID scan bed meshing. 
+> [KAMP aka Klipper-Adaptive-Meshing-Purging](https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging) should be removed from your klipper prior to using Eddy. Please comment out the include line. ie ```#[include ./KAMP/adaptive_meshing.cfg]``` from your KAMP_SETTINGS.cfg
 >
 > Instead KAMP has been integrated into klipper as of January 2024 and you should use the ADAPTIVE=1 option in your BED_MESH_CALIBRATION calls. You can find more [Information on Adaptive Mesh Here](https://www.klipper3d.org/Bed_Mesh.html#adaptive-meshes)
 
@@ -293,7 +293,7 @@ BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan ADAPTIVE=1
 ### Eddy is performing Z Hops when running Bed Mesh
 - Make sure you are using the correct macro call.
 ```BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan```
-- Remove or alter KAMP - Adaptive Bed Mesh and any custom BED_MESH_CALIBRATE macros. Use klipper adaptive mesh instead. 
+- Remove or alter KAMP - Adaptive Bed Mesh and any custom BED_MESH_CALIBRATE macros. Use klipper adaptive mesh instead or alternatively do not include KAMP/Adaptive_Meshing.cfg in your KAMP_Settings.cfg
 [Information on Adaptive Mesh Here](https://www.klipper3d.org/Bed_Mesh.html#adaptive-meshes)
 
 ### Which Eddy version should I use?
