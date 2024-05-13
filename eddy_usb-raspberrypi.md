@@ -124,7 +124,7 @@ speed: 200
 19. Home X and Y axes with command ```G28 X Y```
 20. Make sure you dont have a bed heightmap loaded.
 21. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
-22. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ```
+22. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ``` (TIP: Go a little lower than you normally would)
 > [!IMPORTANT]
 > Perform another Quick Gantry Leveling (Voron etc)
 23. Once completed use ```SAVE_CONFIG```
