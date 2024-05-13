@@ -14,7 +14,7 @@
 ## Please read [NOTES](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#notes)
 
 # Index
-- [Compiling Firmware](https://github.com/krautech/btt-eddy-guide/blob/main/README.md#compiling-firmware)
+- [Compiling Firmware](#compiling-firmware)
 - [Printer Configuration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
 - - [Z Endstop](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#z-endstop)
 - [Live Current Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
