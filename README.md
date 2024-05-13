@@ -1,113 +1,3 @@
-
-Skip to content
-Navigation Menu
-
-    krautech
-    /
-    btt-eddy-guide
-
-Code
-Issues 1
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-Files
-t
-
-config
-images
-video
-.gitignore
-README.md
-
-    eddy_usb-raspberrypi.md
-
-Editing README.md in btt-eddy-guide
-Breadcrumbs
-
-    btt-eddy-guide
-
-/
-in
-main
-
-Indent mode
-Indent size
-Line wrap mode
-Editing README.md file contents
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
 # Installation of EDDY USB V1 and Raspberry Pi
 
 
@@ -124,7 +14,7 @@ Editing README.md file contents
 ## Please read [NOTES](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#notes)
 
 # Index
-- [Compiling Firmware](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#compiling-firmware)
+- [Compiling Firmware](https://github.com/krautech/btt-eddy-guide/blob/main/README.md#compiling-firmware)
 - [Printer Configuration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
 - - [Z Endstop](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#z-endstop)
 - [Live Current Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
@@ -175,7 +65,212 @@ git checkout eddy/eddy
 14. Type into command line ```sudo reboot```
 
 ## Printer Configuration
+> [!IMPORTANT]
+> ### Z Endstop
+> If you want to enable Z-Homing/Endstop, under your [stepper_z] in printer.cfg change ```endstop_pin: PA5``` to ```endstop_pin: probe:z_virtual_endstop``` and comment out or remove ```position_endstop: 0```
+> 
+15. Add the following to your printer.cfg making sure to adjust for your bed size and probe position
+> [!IMPORTANT]
+> Adjust your **x_offset** and **y_offset** to match your probe position relative to your nozzle. You can do that following these steps found [HERE](https://www.klipper3d.org/Probe_Calibrate.html)
 
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-Attach files by dragging & dropping, selecting or pasting them.
-Editing btt-eddy-guide/README.md at main · krautech/btt-eddy-guide
+```
+[mcu eddy]
+serial: /dev/serial/by-id/usb-Klipper_rp2040_4550357129142D58-if00
+
+[temperature_sensor btt_eddy_mcu]
+sensor_type: temperature_mcu
+sensor_mcu: eddy
+min_temp: 10
+max_temp: 100
+
+[probe_eddy_current btt_eddy]
+sensor_type: ldc1612
+z_offset: 1.0
+#i2c_address:
+i2c_mcu: eddy
+i2c_bus: i2c0f
+x_offset: 0 # Set according to the actual offset relative to the nozzle
+y_offset: 20 # Set according to the actual offset relative to the nozzle
+data_rate: 500
+
+[temperature_probe btt_eddy]
+sensor_type: Generic 3950
+sensor_pin: eddy:gpio26
+horizontal_move_z: 2
+
+[bed_mesh]
+horizontal_move_z: 2
+speed: 300
+mesh_min: 10, 10
+mesh_max: 220, 220
+probe_count: 9, 9
+algorithm: bicubic
+
+
+[safe_z_home]
+home_xy_position: 125, 125
+z_hop: 10
+z_hop_speed: 25
+speed: 200
+```
+## 2. Live Current Calibration
+16. Place Eddy Approx. 20mm above the bed.
+17. From Mainsail or Fluidd run command  ```LDC_CALIBRATE_DRIVE_CURRENT CHIP=btt_eddy```
+18. Type ```SAVE_CONFIG``` to save the drive currant to your config
+## 3. Z Offset Calibration
+> [!IMPORTANT]
+> If using a printer with Quick Gantry Leveling (Voron etc) perform it now to ensure the gantry is level and to prevent the nozzle rubbing into the bed.
+ 
+19. Home X and Y axes with command ```G28 X Y```
+20. Make sure you dont have a bed heightmap loaded.
+21. Move Nozzle to Centre of the bed with ```G0 X125 Y125 F6000``` (adjust for your bed size)
+22. Start Manual Z-Offset Calibration by typing ```PROBE_EDDY_CURRENT_CALIBRATE CHIP=btt_eddy ``` (TIP: Go a little lower than you normally would)
+> [!IMPORTANT]
+> Perform another Quick Gantry Leveling (Voron etc)
+23. Once completed use ```SAVE_CONFIG```
+## 4. Bed Mesh Calibration
+24. Home All Axes
+25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
+26. Once completed use ```SAVE_CONFIG```
+## 5. Temperature Compensation Calibration (Eddy USB ONLY)
+> [!CAUTION]
+> The following steps (27-36) are for Eddy USB Only. Eddy Coil doesnt have temperature compensation so these steps should be disregarded.
+
+27. Home All Axes and move Z 10 above bed
+28. Set idle timeout ```SET_IDLE_TIMEOUT TIMEOUT=36000```
+29. Record ambient temp of the BTT Eddy Sensor
+![Eddy Temperature](https://github.com/krautech/btt-eddy-guide/blob/main/images/eddy-pi/eddy-temp.jpg?raw=true)
+30. Set max temp for bed (i.e 100c) and set typical temperature for hotend (200c)
+31. Wait for BTT Eddy temp to stabilize then record temp.
+32. Return to room temp by turning off bed and hotend
+> [!TIP]
+> If you have a high range to test between ambient and max eddy temp from step 25, you can change the value of STEP=3 to STEP=5 to save you some time. Ideally you want as many calibration points as possible for the best use of eddy but I found for range between 30c-50c a STEP value of 3 was sufficient
+
+33. Run ```PROBE_DRIFT_CALIBRATE PROBE=btt_eddy TARGET=50 STEP=3```  (target should be the temp you recorded of the max recorded temp from step 31.
+34. Using [the paper method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) adjust your Z offset.
+35. Turn on your heat bed and nozzle to same values as step 30
+36. As Eddy temp rises at each 3c (STEP=3) increment, you will automatically be asked to set the z-offset when prompted using the paper test.
+> [!NOTE]
+> By default the calibration procedure will request a manual probe every 2C between samples until the TARGET is reached. The temperature delta between samples can be customized by setting the STEP parameter in PROBE_DRIFT_CALIBRATE.
+>
+> The following additional gcode commands are available during drift calibration.
+>
+>    ```PROBE_DRIFT_NEXT``` may be used to force a new sample before the step delta has been reached.
+>
+>    ```PROBE_DRIFT_COMPLETE``` may be used to complete calibration before the TARGET has been reached.
+>
+>    ```ABORT``` may be used to end calibration and discard results.
+>
+
+> [!TIP]
+> You might not reach your target temperature, thats okay. You can end the test by using command ```PROBE_DRIFT_COMPLETE``` to finish.
+
+37. Youre all done! :)
+
+Make sure you LIVE ADJUST your z-offset with your first print to really home it in.
+
+# Bed Mesh Calibrate Parameters
+Some probes, such as Eddy, are capable of
+"scanning" the surface of the bed.  That is, these probes can sample a mesh
+without lifting the tool between samples.  To activate scanning mode, the
+`METHOD=scan` probe parameter should be passed in the `BED_MESH_CALIBRATE`
+gcode command.
+
+To accommodate these probes the following additional `probe_parameters` are
+available to `BED_MESH_CALIBRATE`:
+
+- `SCAN_MODE=[detailed | rapid]`:  Choses the scan mode.  The `detailed` mode
+  will pause and collect samples at each probe point.  The `rapid` mode will
+  travel on a continuous path with no pauses, collecting samples near each probe
+  point.
+- `SCAN_SPEED=[speed] `: The maximum X/Y travel velocity of the tool when
+  performing a scan.  The default is the value of the `speed` option in the
+  configuration.
+- `SAMPLE_TIME=[time]`:  The time, in seconds, the tool pauses for sample
+  collection in `detailed` scan mode.  The default is .1 seconds.
+- `SAMPLES_RESULT=[option]`: The type of averaging to perform on collected
+  samples.  Available options are:
+  - `standard`: All collected samples are averaged.
+  - `centered`: Samples are sorted by value.  The first and last quarters
+    are discarded and the remaining samples are averaged.
+  - `weighted`: Samples closer to the desired probe location are assigned
+    more weight in the average than samples farther from the location.
+
+# Bed Mesh Scan Height
+
+The scan height is set by the `horizontal_move_z` option in `[bed_mesh]`.  In
+addition it can be supplied with the `BED_MESH_CALIBRATE` gcode command via the
+`HORIZONTAL_MOVE_Z` parameter.
+
+The scan height must be sufficiently low to avoid scanning errors.  Typically
+a height of 2mm (ie: `HORIZONTAL_MOVE_Z=2`) should work well, presuming that the
+probe is mounted correctly.
+
+It should be noted that if the probe is more than 4mm above the surface then the
+results will be invalid.  Thus, scanning is not possible on beds with severe
+surface deviation or beds with extreme tilt that hasn't been corrected.
+
+# Rapid (Continuous) Scanning
+
+When performing a `rapid` scan one should keep in mind that the results will
+have some amount of error.  This error should be low enough to be useful on
+large print areas with reasonably thick layer heights.  Some probes may be
+more prone to error than others.
+
+It is not recommended that rapid mode be used to scan a "dense" mesh.  Some of
+the error introduced during a rapid scan may be gaussian noise from the sensor,
+and a dense mesh will reflect this noise (ie: there will be peaks and valleys).
+
+Bed Mesh will attempt to optimize the travel path to provide the best possible
+result based on the the configuration.  This includes avoiding faulty regions
+when collecting samples and "overshooting" the mesh when changing direction.
+This overshoot improves sampling at the edges of a mesh, however it requires
+that the mesh be configured in a way that allows the tool to travel outside
+of the mesh.
+
+
+```
+[bed_mesh]
+speed: 120
+horizontal_move_z: 5
+mesh_min: 35, 6
+mesh_max: 240, 198
+probe_count: 5
+scan_overshoot: 8
+```
+
+- `scan_overshoot`
+  _Default Value: 0 (disabled)_\
+  The maximum amount of travel (in mm) available outside of the mesh.
+  For rectangular beds this applies to travel on the X axis, and for round beds
+  it applies to the entire radius.  The tool must be able to travel the amount
+  specified outside of the mesh.  This value is used to optimize the travel
+  path when performing a "rapid scan".  The minimum value that may be specified
+  is 1.  The default is no overshoot.
+
+If no scan overshoot is configured then travel path optimization will not
+be applied to changes in direction.
+
+# Extras & Notes
+
+### START PRINT Macro
+
+- Add the following to your start print macro to enable adaptive bed mesh using Eddy
+```
+BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan ADAPTIVE=1
+```
+
+# FAQ - Frequently Asked Questions
+
+### Eddy is performing Z Hops when running Bed Mesh
+- Make sure you are using the correct macro call.
+```BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan```
+- Remove or alter KAMP - Adaptive Bed Mesh and any custom BED_MESH_CALIBRATE macros. Use klipper adaptive mesh instead or alternatively do not include KAMP/Adaptive_Meshing.cfg in your KAMP_Settings.cfg
+[Information on Adaptive Mesh Here](https://www.klipper3d.org/Bed_Mesh.html#adaptive-meshes)
+
+### Which Eddy version should I use?
+- It depends on your needs. Eddy USB and Eddy Coil are nearly identical, however Eddy Coil is more for toolhead boards and connects via I2C connectors.
+- Eddy Coil cannot be used for z-homing as a z-endstop as it doesnt feature temperature compensation.
+
+
+
