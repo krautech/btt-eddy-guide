@@ -11,11 +11,6 @@
 > 
 > This will be merged into mainline klipper at some stage and the guide will be updated once it happens. Until then this is a STRICT REQUIREMENT.
 
-> [!IMPORTANT]
->I placed my eddy configuration from step 9 into its own file eddy.cfg, however this caused an unseen problem later when live adjusting z offset. See [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
-> 
->If not using seperate .cfg files and only using printer.cfg you can disregard live z save offset issues.
-
 ## Please read [NOTES](https://github.com/krautech/vyper-klipper/blob/main/eddy_usb-raspberrypi.md#notes)
 
 # Index
@@ -257,29 +252,6 @@ If no scan overshoot is configured then travel path optimization will not
 be applied to changes in direction.
 
 # Extras & Notes
-
-- Klipper seems to only be able to save Z_Offset to printer.cfg so having ```z_offset: 1``` under ```[probe_eddy_current btt_eddy]``` results in unable to ```SAVE_CONFIG``` if its in its own .cfg file. I have moved these 2 sections into seperate files. This allows klipper to be able to save the z offset automatically.
-
-Printer.cfg
-
-```
-[probe_eddy_current btt_eddy]
-z_offset: 1.0
-```
-
-eddy.cfg
-
-```
-[probe_eddy_current btt_eddy]
-sensor_type: ldc1612
-#z_offset: 1.0 ## THIS IS SET IN PRINTER.CFG INSTEAD
-#i2c_address:
-i2c_mcu: eddy
-i2c_bus: i2c0f
-x_offset: 0 # Set according to the actual offset relative to the nozzle
-y_offset: 20 # Set according to the actual offset relative to the nozzle
-data_rate: 500
-```
 
 ### START PRINT Macro
 
