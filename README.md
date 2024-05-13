@@ -11,23 +11,23 @@
 > 
 > This will be merged into mainline klipper at some stage and the guide will be updated once it happens. Until then this is a STRICT REQUIREMENT.
 
-## Please read [NOTES](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#notes)
+## Please read [NOTES](#notes)
 
 # Index
 - [Compiling Firmware](#compiling-firmware)
-- [Printer Configuration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#printer-configuration)
-- - [Z Endstop](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#z-endstop)
-- [Live Current Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#2-live-current-calibration)
-- [Z-Offset Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#3-z-offset-calibration)
-- [Bed Mesh Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#4-bed-mesh-calibration)
-- [Temperature Compensation Calibration](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#5-temperature-compensation-calibration-eddy-usb-only)
+- [Printer Configuration](#printer-configuration)
+- - [Z Endstop](#z-endstop)
+- [Live Current Calibration](#2-live-current-calibration)
+- [Z-Offset Calibration](#3-z-offset-calibration)
+- [Bed Mesh Calibration](#4-bed-mesh-calibration)
+- [Temperature Compensation Calibration](#5-temperature-compensation-calibration-eddy-usb-only)
 >
-- [Bed Mesh Calibration Parameters](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
-- [Bed Mesh Scan Height](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#bed-mesh-scan-height)
-- [Bed Mesh Rapid Scanning](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#rapid-continuous-scanning)
-- [Extras & Notes](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#extras--notes)
+- [Bed Mesh Calibration Parameters](#bed-mesh-calibrate-parameters)
+- [Bed Mesh Scan Height](#bed-mesh-scan-height)
+- [Bed Mesh Rapid Scanning](#rapid-continuous-scanning)
+- [Extras & Notes](#extras--notes)
 - - Includes Print Start Macro Adjustment
-- [FAQ - Frequently Asked Questions](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#faq---frequently-asked-questions)
+- [FAQ - Frequently Asked Questions](#faq---frequently-asked-questions)
 
 ## Compiling Firmware
 1. SSH into raspberry PI
@@ -130,7 +130,7 @@ speed: 200
 23. Once completed use ```SAVE_CONFIG```
 ## 4. Bed Mesh Calibration
 24. Home All Axes
-25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](https://github.com/krautech/btt-eddy-guide/blob/main/eddy_usb-raspberrypi.md#bed-mesh-calibrate-parameters)
+25. Use command ```BED_MESH_CALIBRATE METHOD=scan SCAN_MODE=rapid``` [Parameters](#bed-mesh-calibrate-parameters)
 26. Once completed use ```SAVE_CONFIG```
 ## 5. Temperature Compensation Calibration (Eddy USB ONLY)
 > [!CAUTION]
