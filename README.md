@@ -28,6 +28,7 @@
 - [Extras & Notes](#extras--notes)
 - - Includes Print Start Macro Adjustment
 - [FAQ - Frequently Asked Questions](#faq---frequently-asked-questions)
+- [Known Issues](#known-issues)
 
 ## Compiling Firmware
 1. SSH into raspberry PI
@@ -268,6 +269,20 @@ BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan ADAPTIVE=1
 - Remove or alter KAMP - Adaptive Bed Mesh and any custom BED_MESH_CALIBRATE macros. Use klipper adaptive mesh instead or alternatively do not include KAMP/Adaptive_Meshing.cfg in your KAMP_Settings.cfg
 [Information on Adaptive Mesh Here](https://www.klipper3d.org/Bed_Mesh.html#adaptive-meshes)
 
+# Known Issues
+- BTT Knomi will cause z-hops, please edit you KNOMI.CFG specifically this line.
+  ```
+  SET_GCODE_VARIABLE MACRO=_KNOMI_STATUS VARIABLE=probing VALUE=True
+  BTT_BED_MESH_CALIBRATE
+  SET_GCODE_VARIABLE MACRO=_KNOMI_STATUS VARIABLE=probing VALUE=False
+  ```
+  
+  so that it looks like this
+  ```
+  SET_GCODE_VARIABLE MACRO=_KNOMI_STATUS VARIABLE=probing VALUE=True
+  BTT_BED_MESH_CALIBRATE SCAN_MODE=rapid METHOD=scan
+  SET_GCODE_VARIABLE MACRO=_KNOMI_STATUS VARIABLE=probing VALUE=False
+  ```
 ### Which Eddy version should I use?
 - It depends on your needs. Eddy USB and Eddy Coil are nearly identical, however Eddy Coil is more for toolhead boards and connects via I2C connectors.
 - Eddy Coil cannot be used for z-homing as a z-endstop as it doesnt feature temperature compensation.
