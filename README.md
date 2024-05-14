@@ -29,6 +29,7 @@
 - - Includes Print Start Macro Adjustment
 - [FAQ - Frequently Asked Questions](#faq---frequently-asked-questions)
 - [Known Issues](#known-issues)
+- - BTT Knomi
 
 ## Compiling Firmware
 1. SSH into raspberry PI
