@@ -28,9 +28,9 @@
 - [Extras & Notes](#extras--notes)
 - - Includes Print Start Macro Adjustment
 - [FAQ - Frequently Asked Questions](#faq---frequently-asked-questions)
--  - Eddy is performing Z Hops when running Bed Mesh
--  - Which Eddy version should I use?
--  - My z-offset doesnt seem to save and resets, is there a work around or fix?
+-  - [Eddy is performing Z Hops when running Bed Mesh](#eddy-is-performing-z-hops-when-running-bed-mesh)
+-  - [Which Eddy version should I use?](#which-eddy-version-should-i-use)
+-  - [My z-offset doesnt seem to save and resets, is there a work around or fix?](#my-z-offset-doesnt-seem-to-save-and-resets-is-there-a-work-around-or-fix)
 - [Known Issues](#known-issues)
 - - BTT Knomi
 
