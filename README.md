@@ -12,6 +12,7 @@
 > This will be merged into mainline klipper at some stage and the guide will be updated once it happens. Until then this is a STRICT REQUIREMENT.
 
 # Index
+- [BTT Eddy Dimensions and Probe Location](#btt-eddy-dimensions-and-probe-location)
 - [Compiling Firmware](#compiling-firmware)
 - [Printer Configuration](#printer-configuration)
 - - [Z Endstop](#z-endstop)
@@ -31,7 +32,8 @@
 -  - [My z-offset doesnt seem to save and resets, is there a work around or fix?](#my-z-offset-doesnt-seem-to-save-and-resets-is-there-a-work-around-or-fix)
 - [Known Issues](#known-issues)
 - - BTT Knomi
-
+## BTT Eddy Dimensions and Probe Location
+![Dimensions](https://github.com/krautech/btt-eddy-guide/blob/main/images/eddy-pi/dimensions.jpg?raw=true)
 ## Compiling Firmware
 1. SSH into raspberry PI or your host device
 2. Type
