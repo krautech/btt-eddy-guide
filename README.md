@@ -11,8 +11,6 @@
 > 
 > This will be merged into mainline klipper at some stage and the guide will be updated once it happens. Until then this is a STRICT REQUIREMENT.
 
-## Please read [NOTES](#notes)
-
 # Index
 - [Compiling Firmware](#compiling-firmware)
 - [Printer Configuration](#printer-configuration)
