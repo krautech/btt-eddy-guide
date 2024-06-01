@@ -1,4 +1,4 @@
-# Installation of EDDY USB V1 - Last Updated 29th May 2025
+# Installation of EDDY USB V1 - Last Updated 29th May 2024
 
 
 > [!WARNING]  
@@ -63,7 +63,7 @@ Remember to change 2e8a:0003 to your device ID you found in step 9
 > [!NOTE]
 > You need to change from the main branch of klipper to BTTs branch as discussed in the warning at the top of the page. This is only temporary and will be updated accordingly.
 > 
-> Still accurate as of **29th May 2025**.
+> Still accurate as of **29th May 2024**.
 13. Change to BTT klipper by entering the following via SSH
 ```
 git remote add eddy https://github.com/bigtreetech/klipper
