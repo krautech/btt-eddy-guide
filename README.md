@@ -1,3 +1,7 @@
+# Please visit [BTT Eddy](https://github.com/bigtreetech/Eddy) for the most up-to-date version of this guide and for submitting issues.
+
+
+
 # Installation of EDDY USB V1 - Last Updated 08 July 2024
 
 > [!WARNING]  
